@@ -1,0 +1,13 @@
+/node_modules
+node_modules/
+.env
+.DS_Store
+Thumbs.db
+Desktop.ini
+dist/
+build/
+*.log
+*.tmp
+*.cache
+.vscode/
+.idea/
