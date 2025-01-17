@@ -5,9 +5,7 @@ class DatabaseConnection {
     this._connected = false;
     this._connecting = false;
     this.maxRetries = 5;
-    this.retryDelay = 5000; // 5 seconds
-    
-    // Handle connection events
+    this.retryDelay = 5000; 
     mongoose.connection.on('connected', () => {
       console.log('MongoDB connected successfully');
       this._connected = true;
@@ -26,7 +24,6 @@ class DatabaseConnection {
       this._connecting = false;
     });
 
-    // Handle process termination
     process.on('SIGINT', this.cleanup.bind(this));
     process.on('SIGTERM', this.cleanup.bind(this));
   }
@@ -48,8 +45,8 @@ class DatabaseConnection {
       await mongoose.connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        serverSelectionTimeoutMS: 5000, // 5 second timeout
-        heartbeatFrequencyMS: 30000, // Check server status every 30 seconds
+        serverSelectionTimeoutMS: 5000,
+        heartbeatFrequencyMS: 30000, // ye server status check karega every 30 sec
       });
     } catch (error) {
       this._connecting = false;
@@ -84,7 +81,6 @@ class DatabaseConnection {
   }
 }
 
-// Create and export a single instance
 const dbConnection = new DatabaseConnection();
 
 module.exports = dbConnection;
