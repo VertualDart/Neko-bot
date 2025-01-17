@@ -82,7 +82,6 @@ const cardSchema = new mongoose.Schema({
   }
 });
 
-// Add indexes for better query performance
 cardSchema.index({ name: 1 }, { unique: true });
 cardSchema.index({ type: 1 });
 cardSchema.index({ rarity: 1 });
