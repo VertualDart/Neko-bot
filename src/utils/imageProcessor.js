@@ -10,7 +10,7 @@ async function addWatermark(imageUrl, version, serialNumber) {
     const image = await loadImage(imageUrl);
 
     // Draw the image on the canvas
-    ctx.drawImage(image, 0, 0, 400, 600);
+    ctx.drawImage(image, 0, 0, 400, 600); // dimnensions not proper, mujhe samjha nahi kitna rakhna suitable rahega
 
     // Configure text properties
     ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
@@ -19,11 +19,11 @@ async function addWatermark(imageUrl, version, serialNumber) {
     // Add version watermark
     ctx.fillText(`v${version}`, 20, 580);
 
-    // Add serial number
+    // Add serial number - this function may not be needed tho ig
     ctx.textAlign = 'right'; // Align serial number to the right
     ctx.fillText(`#${serialNumber}`, 380, 580);
 
-    // Return the buffer
+    // Return buffer
     return canvas.toBuffer();
   } catch (error) {
     console.error('Error adding watermark:', error);
