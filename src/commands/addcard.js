@@ -9,7 +9,6 @@ module.exports = {
   example: '!addcard Dragon Warrior | Character | Rare | https://example.com/image.png | A mighty dragon warrior | 5 | 7 | 4',
   async execute(message, args) {
     try {
-      // Split arguments by | and trim whitespace
       const params = args.join(' ').split('|').map(param => param.trim());
       
       if (params.length < 6) {
@@ -117,14 +116,14 @@ module.exports = {
   }
 };
 
-// Helper function to get color based on rarity
+//get color based on rarity
 function getRarityColor(rarity) {
   const colors = {
-    Common: 0x808080,     // Gray
-    Uncommon: 0x00FF00,   // Green
-    Rare: 0x0000FF,       // Blue
-    Epic: 0x800080,       // Purple
-    Legendary: 0xFFD700    // Gold
+    Common: 0x808080,
+    Uncommon: 0x00FF00,
+    Rare: 0x0000FF,
+    Epic: 0x800080,
+    Legendary: 0xFFD700
   };
   return colors[rarity] || 0x808080;
 }
