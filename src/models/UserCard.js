@@ -1,4 +1,3 @@
-// File: src/models/UserCard.js
 const { mongoose } = require('mongoose');
 
 const userCardSchema = new mongoose.Schema({
