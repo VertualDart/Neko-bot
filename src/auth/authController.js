@@ -1,19 +1,16 @@
 const axios = require('axios');
-const User = require('../models/UserInventory'); // Assuming this contains user info
+const User = require('../models/UserInventory');
 
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
-// Redirects users to Discord OAuth
 const handleLogin = (req, res) => {
   const discordAuthURL = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
     REDIRECT_URI
   )}&response_type=code&scope=identify`;
   res.redirect(discordAuthURL);
 };
-
-// Handles Discord's callback
 const handleCallback = async (req, res) => {
   const code = req.query.code;
 
@@ -22,7 +19,6 @@ const handleCallback = async (req, res) => {
   }
 
   try {
-    // Exchange code for access token
     const tokenResponse = await axios.post(
       'https://discord.com/api/oauth2/token',
       new URLSearchParams({
@@ -37,14 +33,12 @@ const handleCallback = async (req, res) => {
 
     const accessToken = tokenResponse.data.access_token;
 
-    // Get user info
     const userResponse = await axios.get('https://discord.com/api/users/@me', {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
 
     const userData = userResponse.data;
 
-    // Save or update user in MongoDB
     const existingUser = await User.findOne({ discordId: userData.id });
     if (!existingUser) {
       const newUser = new User({
