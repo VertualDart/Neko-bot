@@ -1,4 +1,3 @@
-// File: src/models/UserInventory.js
 var mongoose = require('mongoose');
 
 var inventorySchema = new mongoose.Schema({
