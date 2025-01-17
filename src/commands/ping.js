@@ -1,4 +1,3 @@
-// File: commands/ping.js
 module.exports = {
     name: 'ping',
     description: 'Ping command to test bot responsiveness',
