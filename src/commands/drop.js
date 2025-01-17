@@ -1,7 +1,5 @@
-// At the top of drop.js
-const dbConnection = require('../config/database.js'); // Import the database connection
+const dbConnection = require('../config/database.js');
 
-// File: src/commands/drop.js
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const Card = require('../models/card');
 const UserCard = require('../models/UserCard');
@@ -22,7 +20,7 @@ const RARITY_COLORS = {
 module.exports = {
   name: 'drop',
   description: 'Drop a random card for users to claim',
-  cooldown: 300, // 5 minutes cooldown
+  cooldown: 300, // 5 mins cooldown
 
   async execute(message) {
     try {
