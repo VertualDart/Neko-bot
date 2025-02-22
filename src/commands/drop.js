@@ -1,7 +1,7 @@
 const dbConnection = require('../config/database.js');
 
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const Card = require('../models/card');
+const Card = require('../models/Card');
 const UserCard = require('../models/UserCard');
 const ActiveDrop = require('../models/ActiveDrop');
 const { addWatermark } = require('../utils/imageProcessor');
